@@ -5,6 +5,10 @@ const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
 // Products belongsTo Category
+  // Product.belongsTo(Category, {
+  //   deleteOn: 'CASCADE',
+  //   foriegnKey:
+  // });
 
 // Categories have many Products
 
