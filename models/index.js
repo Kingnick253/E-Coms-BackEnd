@@ -17,11 +17,13 @@ const ProductTag = require('./ProductTag');
 // Products belongToMany Tags (through ProductTag)
    Product.belongsToMany(ProductTag, {
     deleteOn: 'CASCADE',
+    through: 'ProductTag',
     foreignKey: 'product_id'
    });
 // Tags belongToMany Products (through ProductTag)
    Tag.belongsToMany(Product, {
     deleteOn: "CASCADE",
+    through: 'ProductTag',
     foreignKey:'tag_id'
    });
 module.exports = {
