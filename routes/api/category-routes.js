@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
 try{
-  const categoryData = await Category.findAll({
+  const Data = await Category.findAll({
     include:[
       {
         model: Product,
@@ -16,14 +16,14 @@ try{
     ],
   });
  
-    if(!categoryData){
+    if(!Data){
       res.status(404).json({message: "Was unable to find the category"});
       return;
     }
-        res.status(200).json(categoryData);
-    }catch (err) {
-      console.log(err);
-      res.status(500).json(err);
+        res.status(200).json(Data);
+    }catch (error) {
+      console.log(error);
+      res.status(500).json(error);
       }
     });
 
@@ -31,15 +31,36 @@ try{
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products!!
+    Category.findOne({
+      where: {
+        id: req.params.id
+      },
+    
+        include:[
+          {
+            model: Product,
+            attributes:["id","product_name", "price", "stock"],
 
-  // Category.findbyPK(req.parmas.id)
-});
+          },
+        ],
+      }).then(categoryData =>{
+        if(!categoryData){
+          res.status(404).json({message: "no Id found"});
+
+        }
+          return res.json(categoryData);
+      })
+    });
+
+
 
 router.post('/', (req, res) => {
   // create a new category
+    Category.create(req.body).then(CategoryData => res.json(CategoryData))
+    .catch(error =>{console.log(error);})
 
-  //Category.create(req.body.category_name)
-});
+  });
+
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
