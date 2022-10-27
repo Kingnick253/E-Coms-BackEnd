@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
         ],
       }).then(categoryData =>{
         if(!categoryData){
-          res.status(404).json({message: "no Id found"});
+          res.status(404).json({message: "no catergory with that id found"});
 
         }
           return res.json(categoryData);
