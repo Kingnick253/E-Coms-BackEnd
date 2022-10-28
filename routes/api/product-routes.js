@@ -11,14 +11,14 @@ router.get('/', async (req, res) => {
     const productData = await Product.findAll({
       include:[
         {
-          model: Category,
+          model: Category, 
           attributes:["id", "category_name"],
         },
-        // {
-        //   model: Tag,
-        //   attributes:["id", "tag_name"],
-        // },
-      ],
+        {
+          model: Tag,
+          attributes:["id", "tag_name"],
+        }
+      ]
     });
     if(!productData){
       res.status(404).json({message: "Was unable to gather product data"});
@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
+  
 });
 
 // get one product
