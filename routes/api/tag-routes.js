@@ -61,6 +61,20 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
+  Tag.update(req.body, {
+    where:{
+       id: req.params.id 
+      }
+   }).then(categoryData => {
+    if(!categoryData){
+      res.status(404).json({message: "no catergory with that id found"});
+
+    }
+      return res.json(categoryData);
+
+  }).catch(err =>{
+    console.log(err);
+  })
 });
 
 router.delete('/:id', (req, res) => {
