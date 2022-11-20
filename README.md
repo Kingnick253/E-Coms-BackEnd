@@ -22,7 +22,8 @@
   
   [ecommerce_.webm](https://user-images.githubusercontent.com/70127239/202885495-b26abe53-a2c7-4439-ada9-b998513a1c3c.webm)
 
-    
+  [seeding and sourcing schema.webm](https://user-images.githubusercontent.com/70127239/202885752-830d4436-9b98-4fa8-91bf-0526556b347a.webm)
+
 ## Credits
 Collaborators: Nicholas Webb
     
